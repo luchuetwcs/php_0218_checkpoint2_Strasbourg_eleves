@@ -10,6 +10,7 @@
 namespace Controller;
 
 use Model\BeastManager;
+use Model\MovieManager;
 
 /**
 * Class ItemController
@@ -24,46 +25,9 @@ class MovieController extends AbstractController
   */
   public function list()
   {
-    $beastsManager = new BeastManager();
-    $beasts = $beastsManager->selectAll();
-    return $this->twig->render('Beast/list.html.twig', ['beasts' => $beasts]);
+    $movieManager = new MovieManager();
+    $movies = $movieManager->selectAll();
+    return $this->twig->render('Movie/list.html.twig', ['movies' => $movies]);
   }
 
-  /**
-  * Display item informations specified by $id
-  *
-  * @param int $id
-  *
-  * @return string
-  */
-  public function details(int $id)
-  {
-      $beastsManager = new BeastManager();
-      $beast = $beastsManager->selectOneById($id);
-
-    return $this->twig->render('Beast/details.html.twig', ['beast'=>$beast]);
-  }
-
-  /**
-  * Display item creation page
-  *
-  * @return string
-  */
-  public function add()
-  {
-    $beastManager = new BeastManager();
-    $plnetManager =
-
-    return $this->twig->render('Beast/add.html.twig');
-  }
-  /**
-  * Display item creation page
-  *
-  * @return string
-  */
-  public function edit()
-  {
-    // TODO : An edition page where your can add a new beast.
-    return $this->twig->render('Beast/edit.html.twig');
-  }
 }

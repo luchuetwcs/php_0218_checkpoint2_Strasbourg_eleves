@@ -6,11 +6,13 @@
 </div>
 <div class="row">
   <ul class="list">
-    <li>Planet id.   Planet Name</li>
+    {% for planet in planets %}
+    <li>{{ planet.id }}.   {{ planet.name }}</li>
+    {% endfor %}
   </ul>
 </div>
 <nav class="row">
   <a href="/movies">Check the movies</a>
-  <a href="/characters">Check the characters</a>
+  <a href="/beasts">Check the beasts</a>
 </nav>
 {% endblock %}
