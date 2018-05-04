@@ -63,4 +63,18 @@ abstract class AbstractManager
 
         return $statement->fetch();
     }
+
+    /**
+     * @return string
+     */
+    public function selectAllById($id)
+    {
+        $statement = $this->pdoConnection->prepare("select beast.id, beast.name, beast.picture, beast.area, beast.size, movie.title, planet.name AS planet from $this->table  INNER JOIN movie ON beast.id_movie = movie.id INNER JOIN planet ON beast.id_planet = planet.id WHERE beast.id= :id");
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+
+    }
 }
