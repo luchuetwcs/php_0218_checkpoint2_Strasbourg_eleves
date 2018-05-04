@@ -8,6 +8,7 @@
         <ul class="list">
             {% for beast in beasts %}
                 <li><a href="/beasts/{{ beast.id }}">{{ beast.id }}. {{ beast.name }}</a></li>
+
             {% else %}
                 <li>Nothing to display</li>
             {% endfor %}

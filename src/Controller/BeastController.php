@@ -10,6 +10,8 @@
 namespace Controller;
 
 use Model\BeastManager;
+use Model\movieManager;
+use Model\planetManager;
 
 /**
 * Class ItemController
@@ -26,6 +28,7 @@ class BeastController extends AbstractController
   {
     $beastsManager = new BeastManager();
     $beasts = $beastsManager->selectAll();
+
     return $this->twig->render('Beast/list.html.twig', ['beasts' => $beasts]);
   }
 
@@ -39,8 +42,10 @@ class BeastController extends AbstractController
   public function details(int $id)
   {
     // TODO : A page which displays all details of a specific beasts.
+      $beastsManager = new BeastManager();
+      $beasts = $beastsManager->selectOneById($id);
 
-    return $this->twig->render('Beast/details.html.twig');
+    return $this->twig->render('Beast/details.html.twig',['beasts' => $beasts]);
   }
 
   /**
@@ -51,8 +56,15 @@ class BeastController extends AbstractController
   public function add()
   {
     // TODO : A creation page where your can add a new beast.
+      //$beastsManager = new BeastManager();
+     // $newbeast = $beastsManager->insert($data);
+      $movieManager = new movieManager();
+      $movie = $movieManager->selectAll();
 
-    return $this->twig->render('Beast/add.html.twig');
+      $planetManager = new planetManager();
+      $planet = $planetManager->selectAll();
+
+    return $this->twig->render('Beast/add.html.twig',['movie'=>$movie, 'planet'=>$planet]);
   }
   /**
   * Display item creation page
@@ -64,4 +76,14 @@ class BeastController extends AbstractController
     // TODO : An edition page where your can add a new beast.
     return $this->twig->render('Beast/edit.html.twig');
   }
+  /*public function index()
+  {
+      $movieManager = new movieManager();
+      $movie = $movieManager->selectAll();
+
+      $planetManager = new planetManager();
+      $planet = $planetManager->selectAll();
+
+      return $this->twig->render('Beast/_form.html.twig',);
+  }*/
 }

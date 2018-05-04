@@ -8,9 +8,20 @@ namespace Service;
 class StringTools
 {
 
+    /**
+     * @param string $str
+     * @return string
+     */
     public static function trimWhiteSpaces(string $str):string
     {
-        //TODO Write your code here,
-        //TODO And return something at the end...
+
+        //return implode('', array_diff(str_split($str), [' ']));
+        $tab = str_split($str);
+        while ($tab[0]==' '){
+            array_shift($tab);
+        }
+        $str = implode("",$tab);
+        return $str;
     }
 }
+
