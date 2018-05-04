@@ -42,8 +42,9 @@ abstract class AbstractManager
      */
     public function selectAll(): array
     {
-        return $this->pdoConnection->query("SELECT * FROM `$this->table`")
-            ->fetchAll(\PDO::FETCH_CLASS, $this->className);
+        return $this->pdoConnection->query("SELECT name , picture , size , area FROM beast LEFT JOIN (movie, planet)
+ON (movie.id = beast.id_movie AND planet.id = beast.id_planet )")
+            ->fetchAll(\PDO::FETCH_CLASS);
     }
 
     /**
