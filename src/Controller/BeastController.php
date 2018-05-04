@@ -40,7 +40,14 @@ class BeastController extends AbstractController
   {
     // TODO : A page which displays all details of a specific beasts.
 
-    return $this->twig->render('Beast/details.html.twig');
+    $id = [];
+
+    $id = $_POST['details'];
+
+
+    $beastsManager = new BeastManager();
+    $beasts = $beastsManager->selectOneById($id);
+    return $this->twig->render('Beast/details.html.twig', ['beast' => $beasts]);
   }
 
   /**

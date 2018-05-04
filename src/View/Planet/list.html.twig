@@ -6,7 +6,9 @@
 </div>
 <div class="row">
   <ul class="list">
-    <li>Planet id.   Planet Name</li>
+    {% for planets in planets %}
+    <li>{{ planets.id }}.   {{ planets.Name }}</li>
+    {% endfor %}
   </ul>
 </div>
 <nav class="row">

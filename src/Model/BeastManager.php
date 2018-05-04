@@ -21,4 +21,15 @@ class BeastManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
+    public function selectOneById(int $id)
+    {
+        // prepared request
+        $statement = $this->pdoConnection->prepare("SELECT * FROM `$this->table` WHERE id=:id");
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }

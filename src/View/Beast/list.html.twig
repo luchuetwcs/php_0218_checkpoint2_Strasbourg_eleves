@@ -7,7 +7,11 @@
     <div class="row">
         <ul class="list">
             {% for beast in beasts %}
-                <li><a href="/beasts/{{ beast.id }}">{{ beast.id }}. {{ beast.name }}</a></li>
+              <form action="/beasts/{{ beast.id }}" method="post">
+                <li><p>{{ beast.id }}. {{ beast.name }}</p></li>
+                <input type="submit" name="detail" value="Détails">
+                <input type="hidden" name="details" value="{{ beast.id }}">
+              </form>
             {% else %}
                 <li>Nothing to display</li>
             {% endfor %}
