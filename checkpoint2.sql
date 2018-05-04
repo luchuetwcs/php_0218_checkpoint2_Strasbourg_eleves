@@ -3,12 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 02 Mai 2018 à 10:19
--- Version du serveur :  5.7.22-0ubuntu0.16.04.1
--- Version de PHP :  7.0.29-1+ubuntu16.04.1+deb.sury.org+1
+-- Généré le :  Ven 04 Mai 2018 à 11:57
+-- Version du serveur :  5.7.21-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `checkpoint2`
@@ -84,14 +90,14 @@ INSERT INTO `movie` (`id`, `title`) VALUES
 
 CREATE TABLE `planet` (
   `id` int(11) NOT NULL,
-  `name` varchar(256) NOT NULL
+  `planet` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `planet`
 --
 
-INSERT INTO `planet` (`id`, `name`) VALUES
+INSERT INTO `planet` (`id`, `planet`) VALUES
 (3, 'Mandalore'),
 (4, 'Coruscant'),
 (5, 'Dagobah'),
@@ -158,3 +164,7 @@ ALTER TABLE `planet`
 ALTER TABLE `beast`
   ADD CONSTRAINT `beast_ibfk_1` FOREIGN KEY (`id_planet`) REFERENCES `planet` (`id`),
   ADD CONSTRAINT `beast_ibfk_2` FOREIGN KEY (`id_movie`) REFERENCES `movie` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

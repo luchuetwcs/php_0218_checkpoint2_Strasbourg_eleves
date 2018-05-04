@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="checkpoint2.sql" uuid="4e9b4807-be9e-4aa8-a838-a5798d8f18fc">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="jdbc:hsqldb:file:/home/coralie/Bureau/Checkpoint2/php_0218_checkpoint2_Strasbourg_eleves/checkpoint2.sql/" uuid="15f69c38-f1ef-445e-bd80-c1fd4572296a">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Mysql - checkpoint2.sql@localhost" uuid="88676ab2-18b8-4557-953c-0156f3c1ec28">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+    <data-source name="@localhost" uuid="8ff3c864-1f04-4d6b-bd05-1ea9bd98eec3">
+      <database-info product="MySQL" version="5.7.21-0ubuntu0.16.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <user-name>eleve</user-name>
+      <introspection-schemas>*:atelier</introspection-schemas>
+    </data-source>
+  </component>
+</project>
