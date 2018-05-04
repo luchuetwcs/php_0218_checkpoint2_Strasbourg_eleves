@@ -20,4 +20,14 @@ class MovieManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
+    public function selectOneByTitle(string $title)
+    {
+        // prepared request
+        $statement = $this->pdoConnection->prepare("SELECT * FROM `$this->table` WHERE title=:title");
+        $statement->bindValue('title', $title, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch(\PDO::FETCH_ASSOC);
+    }
 }
