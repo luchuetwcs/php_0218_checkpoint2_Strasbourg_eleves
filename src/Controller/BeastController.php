@@ -39,8 +39,15 @@ class BeastController extends AbstractController
   public function details(int $id)
   {
     // TODO : A page which displays all details of a specific beasts.
+      $beastsManager = new BeastManager();
+      $details = $beastsManager->beastCar($id);
+      var_dump($details);
+      $beastsManager = new BeastManager();
+      $planet = $beastsManager->beastPlanet($id);
+      $beastsManager = new BeastManager();
+      $movie = $beastsManager->beastMovie($id);
 
-    return $this->twig->render('Beast/details.html.twig');
+    return $this->twig->render('Beast/details.html.twig',['details' => $details,'planet' => $planet,'movie' => $movie]);
   }
 
   /**
@@ -51,6 +58,7 @@ class BeastController extends AbstractController
   public function add()
   {
     // TODO : A creation page where your can add a new beast.
+      if (isset($_POST['Valider'])){}
 
     return $this->twig->render('Beast/add.html.twig');
   }
