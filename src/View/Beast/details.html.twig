@@ -14,10 +14,14 @@
             <img src="{# Beast's picture url#}" class="img-fluid"/>
         </figure>
         <div class="col-12 col-md-8">
-            <p>Area : Beast's origin area</p>
-            <p>Size : Beast's size m</p>
-            <p>Planet : Beast's planet </p>
-            <p>Movie(s) :Beast's movie</p>
+            {% for beast in details %}
+            <p>Area : {{ beast.Area }}</p>
+            <p>Size : {{  beast.Size}}</p>
+            <p>Planet : {{ beast.Planet }} </p>
+            <p>Movie(s) : {{ beast.Name  }}</p>
+            {% else %}
+                <li>Nothing to display</li>
+            {% endfor %}
         </div>
     </div>
     <a href="/beasts">Back</a>
