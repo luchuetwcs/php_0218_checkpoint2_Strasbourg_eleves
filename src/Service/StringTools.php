@@ -10,7 +10,15 @@ class StringTools
 
     public static function trimWhiteSpaces(string $str):string
     {
-        //TODO Write your code here,
-        //TODO And return something at the end...
+        $result = "";
+        for ($i = 0; $i < strlen($str); $i++)
+        {
+            if($str[$i] !== " ")
+            {
+                $result .= $str[$i];
+            }
+        }
+        return $result;
     }
 }
+

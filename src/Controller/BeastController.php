@@ -38,9 +38,15 @@ class BeastController extends AbstractController
   */
   public function details(int $id)
   {
-    // TODO : A page which displays all details of a specific beasts.
 
-    return $this->twig->render('Beast/details.html.twig');
+    // TODO : A page which displays all details of a specific beasts.
+      $beastsManager = new BeastManager();
+      /*$result = $beastsManager->selectOneById($id);*/
+      $resultat1 = $beastsManager->recupBeastPlanet($id);
+      /*$resultat2 = $beastsManager->recupBeastMovie($recup_id);*/
+
+      return $this->twig->render('Beast/details.html.twig', ['infosBeast' => $resultat1]);
+    /*return $this->twig->render('Beast/details.html.twig', ['infosBeastPlanet' => $resultat1, 'infosBeastMovie' => $resultat2]);*/
   }
 
   /**
