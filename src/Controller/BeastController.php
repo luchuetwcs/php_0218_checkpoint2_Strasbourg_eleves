@@ -10,6 +10,8 @@
 namespace Controller;
 
 use Model\BeastManager;
+use Model\MovieManager;
+use Model\PlanetManager;
 
 /**
 * Class ItemController
@@ -40,8 +42,14 @@ class BeastController extends AbstractController
   {
     $beastManager = new BeastManager();
     $beast = $beastManager->selectOneById($id);
+    $creature = (array) $beast;
 
-    return $this->twig->render('Beast/details.html.twig', ['beast' => $beast]);
+    $movieManager = new MovieManager();
+    $movie = $movieManager->selectOneById($creature['id_movie']);
+
+    $planetManager = new PlanetManager();
+    $planet = $planetManager->selectOneById($creature['id_planet']);
+    return $this->twig->render('Beast/details.html.twig', ['beast' => $beast, 'movie' => $movie, 'planet' => $planet]);
   }
 
   /**
