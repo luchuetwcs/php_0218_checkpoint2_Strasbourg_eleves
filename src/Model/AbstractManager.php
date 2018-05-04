@@ -17,7 +17,6 @@ use App\Connection;
 abstract class AbstractManager
 {
     protected $pdoConnection; //variable de connexion
-
     protected $table;
     protected $className;
 
@@ -63,4 +62,11 @@ abstract class AbstractManager
 
         return $statement->fetch();
     }
+    public function selectDetail()
+    {
+        return $this->pdoConnection->query("SELECT size,name,area FROM `$this->table`")
+            ->fetchAll(\PDO::FETCH_CLASS, $this->className);
+
+    }
+
 }

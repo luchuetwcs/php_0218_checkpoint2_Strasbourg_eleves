@@ -15,8 +15,13 @@ namespace Model;
 class Beast
 {
     private $id;
-
     private $name;
+    private $size;
+    private $area;
+    private $movie;
+    private $planet;
+
+
 
     /**
      * @return int
@@ -44,7 +49,6 @@ class Beast
     {
         return $this->name;
     }
-
     /**
      * @param mixed $name
      */
@@ -52,4 +56,64 @@ class Beast
     {
         $this->name = $name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+    /**
+     * @param mixed $size
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+    /**
+     * @param mixed $area
+     */
+    public function setArea($area)
+    {
+        $this->area = $area;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMovie()
+    {
+        return $this->movie;
+    }
+    /**
+     * @param mixed $movie
+     */
+    public function setMovie($movie)
+    {
+        $this->movie = $movie;
+    }
+    /**
+     * @return mixed
+     */
+    public function getPlanet()
+    {
+        return $this->planet;
+    }
+    /**
+     * @param mixed $planet
+     */
+    public function setPlanet($planet)
+    {
+        $this->planet = $planet;
+    }
+
 }
