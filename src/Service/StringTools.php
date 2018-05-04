@@ -12,5 +12,12 @@ class StringTools
     {
         //TODO Write your code here,
         //TODO And return something at the end...
+        $tabSplit=str_split($str);
+            while ($tabSplit[0] == " ") {
+                array_shift($tabSplit);
+            }
+           $str = implode("",$tabSplit);
+            return $str;
     }
+
 }
