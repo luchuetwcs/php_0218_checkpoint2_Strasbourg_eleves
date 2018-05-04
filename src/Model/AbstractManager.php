@@ -56,7 +56,7 @@ abstract class AbstractManager
     public function selectOneById(int $id)
     {
         // prepared request
-        $statement = $this->pdoConnection->prepare("SELECT * FROM `$this->table` WHERE id=:id");
+        $statement = $this->pdoConnection->prepare("SELECT * FROM `$this->table` WHERE id=:id inner join movie on beast.id_movie=movie.id inner join planet on beast.id=planet.id");
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
