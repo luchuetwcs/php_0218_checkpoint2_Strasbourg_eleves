@@ -18,10 +18,14 @@ class Beast
 
     private $name;
 
+    private $picture;
+
+    private $size;
+
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -51,5 +55,26 @@ class Beast
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    }
+
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    public function setSize($size)
+    {
+        $this->picture = $size;
     }
 }

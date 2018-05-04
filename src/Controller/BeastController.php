@@ -10,6 +10,7 @@
 namespace Controller;
 
 use Model\BeastManager;
+use Model\Beast;
 
 /**
 * Class ItemController
@@ -39,8 +40,17 @@ class BeastController extends AbstractController
   public function details(int $id)
   {
     // TODO : A page which displays all details of a specific beasts.
+      $beastManager = new Beast();
+      $beastId = $beastManager->getId();
+      $beastName = $beastManager->getName();
+      $beastPicture = $beastManager->getPicture();
 
-    return $this->twig->render('Beast/details.html.twig');
+    return $this->twig->render('Beast/details.html.twig',
+        ['id' => $beastId,
+            'name' => $beastName,
+            'picture' => $beastPicture
+
+        ]);
   }
 
   /**
