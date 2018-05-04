@@ -6,7 +6,12 @@
 </div>
 <div class="row">
   <ul class="list">
-    <li>Planet id.   Planet Name</li>
+      {% for planet in planets %}
+        <li><a href="/movies/{{ planet.id }}">{{  planet.id  }}. {{  planet.name  }}</a></li>
+      {% else %}
+        <li>Nothing to display</li>
+      {% endfor %}
+
   </ul>
 </div>
 <nav class="row">

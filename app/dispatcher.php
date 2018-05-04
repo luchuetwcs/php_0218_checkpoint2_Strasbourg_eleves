@@ -21,6 +21,9 @@ $routesCollection = function (FastRoute\RouteCollector $r) use ($routes) {
 
 $dispatcher = FastRoute\simpleDispatcher($routesCollection);
 
+
+
+
 // Fetch method and URI from somewhere
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
