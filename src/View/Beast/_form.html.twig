@@ -1,45 +1,55 @@
-<form method="post">
+{% if errors|length>0 %}
+    <div class="alert alert-danger">
+        {% for error in errors %}
+            <strong>{{ error }}</strong><br>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<form action="" method="post">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="title">Name :</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" value = "{% if data.name is defined %}{{ data.name }}{% endif %}">
         </div>
         <div class="form-group col-md-6">
             <label for="area">Area :</label>
-            <input type="text" class="form-control" name="area">
+            <input type="text" class="form-control" name="area" value = "{% if data.area is defined %}{{ data.area }}{% endif %}">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="area">Picture :</label>
-            <input type="url" class="form-control" name="picture" id="picture"/>
+            <input type="url" class="form-control" name="picture" id="picture" value = "{% if data.picture is defined %}{{ data.picture }}{% endif %}"/>
         </div>
         <div class="form-group col-md-6">
             <label for="size">Size (in meter):</label>
-            <input type="text" class="form-control" name="size" id="size"/>
+            <input type="text" class="form-control" name="size" id="size" value = "{% if data.size is defined %}{{ data.size }}{% endif %}"/>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="planet">Planet :</label>
             <select name="planet" class="custom-select" id="planet">
-                <option value="Planet">Planet name</option>
-                <option value="Planet">Planet name</option>
-                <option value="Planet">Planet name</option>
+                <option value="" {% if select.planet=="" %}selected{% endif %}>Select Planet</option>
+                {% for planet in planets %}
+                <option value="{{ planet.id }}" {% if select.planet==planet.id %}selected{% endif %}>{{ planet.name }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="form-group col-md-6">
             <label for="movies">Movie :</label>
-            <select name="movies[]" class="custom-select" id="movies" multiple>
-                <option value="Movie">Movie title</option>
-                <option value="Movie">Movie title</option>
-                <option value="Movie">Movie title</option>
+            <select name="movie" class="custom-select" id="movies">
+                <option value="" {% if select.movie=="" %}selected{% endif %}>Select Movie</option>
+                {% for movie in movies %}
+                <option value="{{ movie.id }}" {% if select.movie==movie.id %}selected{% endif %}>{{ movie.title }}</option>
+                {% endfor %}
             </select>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-12">
-            <input type="submit" value="Valider" class="float-right">
+            <input type="submit" value="Valider" name="Valider" class="float-right">
         </div>
     </div>
 </form>

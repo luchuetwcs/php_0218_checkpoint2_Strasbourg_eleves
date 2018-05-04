@@ -63,4 +63,48 @@ abstract class AbstractManager
 
         return $statement->fetch();
     }
+    public function delete($id)
+    {
+        // prepared request
+        $statement = $this->pdoConnection->prepare("DELETE FROM ".$this->table." WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        return $statement->execute();
+
+    }
+
+    /**
+     *
+     */
+    public function insert($data)
+    {
+        $columns = "";
+        $values = "";
+        foreach ($data as $column => $value){
+            $columns .= $column.', ';
+            $values .= '"'.$value.'", ';
+        }
+        $columns=substr($columns, 0, strlen($columns)-2);
+        $values=substr($values, 0, strlen($values)-2);
+        $statement = $this->pdoConnection->prepare('INSERT INTO '.$this->table.' ('.$columns.') VALUES ('.$values.')');
+
+        return $statement->execute();
+
+    }
+
+
+    /**
+     *
+     */
+    public function update($id, $data)
+    {
+        $modifs = "";
+        foreach ($data as $column => $value){
+            $modifs.=$column.'="'.$value.'", ';
+        }
+        $modifs=substr($modifs, 0, strlen($modifs)-2);
+        $statement = $this->pdoConnection->prepare('UPDATE '.$this->table.' SET '.$modifs.' WHERE id='.$id);
+
+        return $statement->execute();
+
+    }
 }

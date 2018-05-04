@@ -10,6 +10,8 @@
 namespace Controller;
 
 use Model\BeastManager;
+use Model\MovieManager;
+use Model\PlanetManager;
 
 /**
 * Class ItemController
@@ -51,9 +53,88 @@ class BeastController extends AbstractController
   */
   public function add()
   {
-    // TODO : A creation page where your can add a new beast.
+    $beastManager = new BeastManager();
+    $planetManager = new PlanetManager();
+    $movieManager = new MovieManager();
+    $data=[];
+    $errors =[];
+    $select['planet']="";
+    $select['movie']="";
+    if (isset($_POST['Valider'])){
 
-    return $this->twig->render('Beast/add.html.twig');
+        //Name checking
+        if ($_POST['name']!=""){
+            $data['name'] = $_POST['name'];
+        }
+        else {
+            $errors[] = 'Please enter Beast name.';
+        }
+
+        //Area checking
+        if ($_POST['area']!=""){
+            $data['area'] = $_POST['area'];
+        }
+        else {
+            $errors[] = 'Please enter Beast area.';
+        }
+
+        //Picture checking
+        if ($_POST['picture']!=""){
+            $data['picture'] = $_POST['picture'];
+        }
+        else {
+            $errors[] = 'Please enter Beast picture URL.';
+        }
+
+        //Size checking
+        if ($_POST['size']!=""){
+            $data['size'] = $_POST['size'];
+        }
+        else {
+            $errors[] = 'Please enter Beast size.';
+        }
+
+        //Planet checking
+        if ($_POST['planet']!=""){
+            $data['id_planet'] = $_POST['planet'];
+            $select['planet']=$_POST['planet'];
+        }
+        else {
+            $select['planet'] = "";
+            $errors[] = 'Please choose Beast planet.';
+        }
+
+        //Movie checking
+        if ($_POST['movie']!=""){
+            $data['id_movie'] = $_POST['movie'];
+            $select['movie']=$_POST['movie'];
+        }
+        else {
+            $select['movie'] = "";
+            $errors[] = 'Please choose Beast movie.';
+        }
+
+        //Insertion BDD
+        if (count($errors)==0){
+            $ok = $beastManager->insert($data);
+            if ($ok){
+                header('Location: /beasts');
+            }
+            else {
+                $errors[] = 'Erreur d\'insertion dans la base de donnée.';
+            }
+        }
+    }
+
+    $planets = $planetManager->selectAll();
+    $movies = $movieManager->selectAll();
+
+    return $this->twig->render('Beast/add.html.twig',
+        ['planets'=>$planets,
+            'movies'=>$movies,
+            'data'=>$data,
+            'select'=>$select,
+            'errors'=>$errors]);
   }
   /**
   * Display item creation page
